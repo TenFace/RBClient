@@ -1,0 +1,99 @@
+package com.itheima.rbclient.ui.fragment;
+
+import android.os.Bundle;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.ImageView;
+import android.widget.ListView;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
+
+import com.itheima.rbclient.R;
+
+import butterknife.ButterKnife;
+import butterknife.InjectView;
+import butterknife.OnClick;
+
+/**
+ * Created by Administrator on 2016/8/4.
+ */
+public class JiesuanCenterFragment extends BaseFragment implements View.OnClickListener {
+
+    @InjectView(R.id.btn_jiesuan_back)
+    Button btnJiesuanBack;//回退
+    @InjectView(R.id.btn_jiesuan_submit)
+    Button btnJiesuanSubmit;//提交
+    @InjectView(R.id.rl_jiesuan_address)
+    RelativeLayout rlJiesuanAddress;//选择地址
+    @InjectView(R.id.rl_jiesuan_payway)
+    RelativeLayout rlJiesuanPayway;//选择支付方式
+    @InjectView(R.id.rl_jiesuan_time)
+    RelativeLayout rlJiesuanTime;//选择送货时间
+    @InjectView(R.id.rl_jiesuan_courier)
+    RelativeLayout rlJiesuanCourier;//选择快递
+    @InjectView(R.id.rl_jiesuan_coupon)
+    RelativeLayout rlJiesuanCoupon;//选择优惠券
+    @InjectView(R.id.rl_jiesuan_invoice)
+    RelativeLayout rlJiesuanInvoice;//选择发票
+    @InjectView(R.id.tv_count_number)
+    TextView tvCountNumber;//数量总计
+    @InjectView(R.id.tv_count_origin)
+    TextView tvCountOrigin;//初始价格总计
+    @InjectView(R.id.tv_count_freight)
+    TextView tvCountFreight;//运费
+    @InjectView(R.id.tv_count_coupon)
+    TextView tvCountCoupon;//优惠
+    @InjectView(R.id.tv_count_money)
+    TextView tvCountMoney;//最终价格
+    @InjectView(R.id.btn_jiesuan_commit)
+    Button btnJiesuanCommit;//提交
+    @InjectView(R.id.lv_jiesuan)
+    ListView lvJiesuan;//填充商品的ListView(item_jiesuan为其Item)
+
+    @Override
+    protected View createView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+
+        View view = inflater.inflate(R.layout.fragment_jiesuancenter, null);
+
+        return view;
+    }
+    @Override
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        // TODO: inflate a fragment view
+        View rootView = super.onCreateView(inflater, container, savedInstanceState);
+        ButterKnife.inject(this, rootView);
+        return rootView;
+    }
+
+    @Override
+    public void onDestroyView() {
+        super.onDestroyView();
+        ButterKnife.reset(this);
+    }
+
+    @OnClick({R.id.btn_jiesuan_back, R.id.btn_jiesuan_submit, R.id.rl_jiesuan_address, R.id.rl_jiesuan_payway, R.id.rl_jiesuan_time, R.id.rl_jiesuan_courier, R.id.rl_jiesuan_coupon, R.id.rl_jiesuan_invoice, R.id.btn_jiesuan_commit})
+    public void onClick(View view) {
+        switch (view.getId()) {
+            case R.id.btn_jiesuan_back:
+                break;
+            case R.id.btn_jiesuan_submit:
+                break;
+            case R.id.rl_jiesuan_address:
+                break;
+            case R.id.rl_jiesuan_payway:
+                break;
+            case R.id.rl_jiesuan_time:
+                break;
+            case R.id.rl_jiesuan_courier:
+                break;
+            case R.id.rl_jiesuan_coupon:
+                break;
+            case R.id.rl_jiesuan_invoice:
+                break;
+            case R.id.btn_jiesuan_commit:
+                break;
+        }
+    }
+}

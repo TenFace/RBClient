@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="horizontal" android:layout_width="match_parent"
+    android:layout_height="130dp">
+    <ImageView
+        android:id="@+id/iv_item_flashpic"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+
+        android:src="@drawable/product_loading"/>
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_weight="1"
+        android:layout_height="100dp"
+        android:layout_marginTop="3dp"
+        android:orientation="vertical">
+        <TextView
+            android:id="@+id/tv_item_flash_name"
+            style="@style/more_tab_tv_style"
+            android:singleLine="true"
+            android:text="商品名"/>
+        <TextView
+            android:id="@+id/tv_item_flash_ydale"
+            style="@style/more_tab_tv_style"
+            android:layout_marginTop="3dp"
+            android:textColor="#888888"
+            android:text="原价格"/>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="7dp"
+            android:singleLine="true"
+            android:orientation="horizontal">
+            <TextView
+
+                style="@style/more_tab_tv_style"
+                android:layout_width="wrap_content"
+                android:textColor="#F00"
+                android:textSize="18sp"
+                android:text="限时价格"/>
+            <TextView
+                android:id="@+id/tv_item_flash_sale"
+                style="@style/more_tab_tv_style"
+                android:textColor="#77000000"
+                android:singleLine="true"
+                android:text="￥8888"/>
+        </LinearLayout>
+        <TextView
+            android:id="@+id/tv_item_flash_time"
+            style="@style/more_tab_tv_style"
+            android:layout_marginTop="4dp"
+            android:textColor="#ff0000"
+            android:singleLine="true"
+            android:text="剩余时间"/>
+    </LinearLayout>
+
+    <Button
+        android:layout_width="70dp"
+        android:layout_height="wrap_content"
+        android:layout_marginRight="10dp"
+        android:layout_gravity="center_vertical"
+        android:textSize="10sp"
+        android:text="立即抢购"
+
+         />
+
+</LinearLayout>

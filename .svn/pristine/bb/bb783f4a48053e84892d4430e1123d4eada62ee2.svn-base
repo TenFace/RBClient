@@ -1,0 +1,54 @@
+package com.itheima.rbclient.ui.fragment;
+
+import android.content.Intent;
+import android.os.Bundle;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.RelativeLayout;
+
+import com.itheima.rbclient.R;
+
+import butterknife.ButterKnife;
+import butterknife.InjectView;
+
+/**
+ * Created by Administrator on 2016/8/4.
+ */
+public class JiesuanCenterFragment extends BaseFragment implements View.OnClickListener {
+
+    @InjectView(R.id.rl_username_msg)
+    RelativeLayout rl_username_msg;
+    @InjectView(R.id.btn_next)
+    Button btn_next;
+    @InjectView(R.id.rl_username_payway)
+    RelativeLayout rl_username_payway;
+
+    @Override
+    protected View createView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+
+        View view = inflater.inflate(R.layout.fragment_jiesuancenter,null);
+        ButterKnife.inject(this,view);
+
+        rl_username_msg.setOnClickListener(this);
+        btn_next.setOnClickListener(this);
+        rl_username_payway.setOnClickListener(this);
+
+        return view;
+    }
+
+    @Override
+    public void onClick(View v) {
+
+        switch(v.getId()){
+            case R.id.rl_username_msg :
+                swichToChildFragment(FragmentInstanceManager.getInstance().getFragment(AddressFragment.class), true);
+            break;
+
+            case R.id.rl_username_payway :
+                swichToChildFragment(FragmentInstanceManager.getInstance().getFragment(PaywayFragment.class), true);
+                break;
+        }
+    }
+}

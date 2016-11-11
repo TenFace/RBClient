@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+
+    <RelativeLayout
+        android:id="@+id/rl_helpcenter_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <TextView
+            style="@style/title_tv_style"
+            android:text="账户中心"/>
+        <Button
+            android:id="@+id/btn_helpcenter_back"
+            style="@style/title_btn_style"
+            android:paddingLeft="20dp"
+            android:background="@drawable/bar_head_back_bg"
+            android:text="更多"/>
+    </RelativeLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/rl_helpcenter_title"
+        android:layout_margin="15dp"
+        android:orientation="vertical">
+
+        <RelativeLayout
+            android:id="@+id/rl_helpcenter_guide"
+            style="@style/more_tab_rl_style">
+            <TextView
+                style="@style/more_tab_tv_style"
+                android:text="购物指南" />
+            <ImageView
+                style="@style/more_tab_iv_style"
+                android:src="@drawable/arrow_right" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/rl_helpcenter_aftersale"
+            style="@style/more_tab_rl_style">
+            <TextView
+                style="@style/more_tab_tv_style"
+                android:text="售后服务" />
+            <ImageView
+                style="@style/more_tab_iv_style"
+                android:src="@drawable/arrow_right" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/rl_helpcenter_distribution"
+            style="@style/more_tab_rl_style">
+            <TextView
+                style="@style/more_tab_tv_style"
+                android:text="配送方式" />
+            <ImageView
+                style="@style/more_tab_iv_style"
+                android:src="@drawable/arrow_right" />
+        </RelativeLayout>
+
+    </LinearLayout>
+
+    <Button
+        android:text="客服电话：400-xxxxxxxxxx"
+        style="@style/service_telephone_btn_style" />
+
+</RelativeLayout>

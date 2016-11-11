@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <TextView
+        style="@style/title_tv_style"
+        android:text="购物车" />
+
+    <Button
+        android:id="@+id/btn_setting"
+        style="@style/title_btn_style"
+        android:layout_marginLeft="10dp"
+        android:background="@drawable/bar_head_button_bg"
+        android:text="编辑" />
+
+    <Button
+        android:id="@+id/btn_pay"
+        style="@style/title_btn_style"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="10dp"
+        android:background="@drawable/bar_head_button_bg"
+        android:text="去结算" />
+
+</RelativeLayout>

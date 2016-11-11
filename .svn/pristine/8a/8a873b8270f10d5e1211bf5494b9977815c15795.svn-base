@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:id="@+id/rl_helpcenter_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            style="@style/title_tv_style"
+            android:text="支付方式" />
+
+        <Button
+            android:id="@+id/btn_back"
+            style="@style/title_btn_style"
+            android:layout_marginLeft="10dp"
+            android:background="@drawable/bar_head_button_bg"
+            android:text="结算中心" />
+
+    </RelativeLayout>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="支付方式"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginBottom="10dp"
+        android:textSize="18dp"/>
+
+    <RadioGroup
+        android:id="@+id/radioGroup1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+        android:padding="10dp">
+
+        <RadioButton
+            android:padding="5dp"
+            android:background="@drawable/moro_tab_bg"
+            android:button="@null"
+            android:id="@+id/radioButton1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="到付-现金"
+            />
+
+        <RadioButton
+            android:padding="5dp"
+            android:background="@drawable/moro_tab_bg"
+            android:button="@null"
+            android:id="@+id/radioButton2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="到付-pos" />
+
+        <RadioButton
+            android:padding="5dp"
+            android:background="@drawable/moro_tab_bg"
+            android:button="@null"
+            android:id="@+id/radioButton3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="支付宝" />
+    </RadioGroup>
+
+</LinearLayout>

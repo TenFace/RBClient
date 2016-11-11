@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="horizontal" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <ImageView
+        android:id="@+id/iv_jiesuan_icon"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_marginLeft="5dp"
+        android:layout_marginTop="5dp"
+        android:src="@drawable/icon" />
+
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="100dp"
+        android:layout_marginTop="5dp"
+        android:layout_weight="10"
+        android:gravity="center_vertical"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/tv_jiesuan_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginLeft="5dp"
+            android:text="高薪就业"
+            android:textColor="#000"
+            android:textSize="16dp" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/tv_jiesuan_color"
+                style="@style/Detail_Goods"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:text="颜色：" />
+
+            <TextView
+                android:id="@+id/tv_jiesuan_version"
+                style="@style/Detail_Goods"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:text="尺码：" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/tv_jiesuan_price"
+                style="@style/Detail_Goods"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:text="价格：" />
+
+            <TextView
+                android:id="@+id/tv_jiesuan_number"
+                style="@style/Detail_Goods"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:text="数量：" />
+
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/tv_jiesuan_subtotal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="5dp"
+            android:layout_marginTop="5dp"
+            android:text="小计："
+            android:textColor="#f00"
+            android:textSize="14dp" />
+
+        </LinearLayout>
+
+</LinearLayout>

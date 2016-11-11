@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            style="@style/title_tv_style"
+            android:text="关于" />
+
+        <Button
+            android:id="@+id/btn_feedback_back"
+            style="@style/title_btn_style"
+            android:text="更多" />
+
+        <Button
+            android:id="@+id/btn_feedback_submit"
+            style="@style/title_btn_style"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="10dp"
+            android:text="提交" />
+    </RelativeLayout>
+
+    <TextView
+        style="@style/more_tab_tv_style"
+        android:text="反馈内容（你可以输入对商品或客户端的建议和意见）" />
+
+    <EditText
+        android:id="@+id/et_feedback_suggest"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:background="@drawable/feedback_et_bg"
+        android:gravity="center"
+        android:hint="用户评论输入框"
+        android:lines="5" />
+
+    <TextView
+        style="@style/more_tab_tv_style"
+        android:text="联系方式" />
+
+    <EditText
+        android:id="@+id/et_feedback_userinfo"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:background="@drawable/feedback_et_bg"
+        android:gravity="center"
+        android:hint="您的姓名，手机号，邮箱"
+        android:lines="2" />
+
+</LinearLayout>

@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+
+    <RelativeLayout
+        android:id="@+id/rl_helpcenter_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <TextView
+            style="@style/title_tv_style"
+            android:text="帮助中心"/>
+        <Button
+            android:id="@+id/btn_helpcenter_back"
+            style="@style/title_btn_style"
+            android:paddingLeft="20dp"
+            android:background="@drawable/bar_head_back_bg"
+            android:text="更多"/>
+    </RelativeLayout>
+
+    <ListView
+        android:id="@+id/lv_helpcenter"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/rl_helpcenter_title"
+        android:layout_margin="15dp">
+    </ListView>
+
+    <Button
+        android:text="客服电话：400-xxxxxxxxxx"
+        style="@style/service_telephone_btn_style" />
+
+</RelativeLayout>

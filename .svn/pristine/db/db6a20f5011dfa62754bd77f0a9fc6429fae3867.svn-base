@@ -1,0 +1,107 @@
+package com.itheima.rbclient.ui.fragment;
+
+import android.os.Bundle;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.Toast;
+
+import com.android.volley.VolleyError;
+import com.itheima.rbclient.App;
+import com.itheima.rbclient.RBConstants;
+import com.itheima.rbclient.bean.ProductDetail;
+import com.itheima.rbclient.eventBean.EventId;
+import com.itheima.rbclient.holder.ProductDetailHolder;
+
+import org.greenrobot.eventbus.EventBus;
+import org.greenrobot.eventbus.Subscribe;
+import org.senydevpkg.net.HttpLoader;
+import org.senydevpkg.net.HttpParams;
+import org.senydevpkg.net.resp.IResponse;
+
+/**
+ * Created by abc on 2016/8/2.
+ * 这是产品详情界面(赵志杰)
+ */
+//需要实现的是框架中的HttpListener接口。
+public class MarketDetailFragment extends BaseFragment implements HttpLoader.HttpListener {
+    ProductDetailHolder productDetailHolder;
+    private Button button;
+    private View rootView;
+    private EventId pId;
+
+    @Override
+    protected View createView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        EventBus.getDefault().register(MarketDetailFragment.this);
+        rootView = initView();
+        return rootView;
+    }
+
+    //这是在商品详情页面初始化布局的的方法
+    private View initView() {
+        productDetailHolder = new ProductDetailHolder(App.appliction);
+        productDetailHolder.setFragment(this);//为了可以调用swichToChildFragment方法
+        //调用这个请求服务器的方法
+        button = productDetailHolder.getViewId();
+        initData();
+        return productDetailHolder.getRootView();
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+
+//        initData();
+//        initData();
+    }
+
+    private void initData() {
+
+        System.out.println("注册事件接收者");
+
+        button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                getFragmentManager().popBackStack();
+            }
+        });
+        //  new MarketDetailProtocol().doRequest(App.HL, this).setTag(this);
+        HttpParams params = new HttpParams().put("pId", pId.pId + "");
+        App.HL.get(RBConstants.URL_MarketDetail, params, ProductDetail.class, RBConstants.REQUEST_CODE_MarketDetail, this);
+
+    }
+
+    @Subscribe(sticky = true)
+    public void onEvent(EventId pId) {
+
+        this.pId = pId;
+        //new MarketDetailProtocol().doRequest(App.HL, this).setTag(this);
+        Toast.makeText(App.appliction, "........." + pId, Toast.LENGTH_SHORT).show();
+
+    }
+
+
+    @Override
+    public void onGetResponseSuccess(int requestCode, IResponse response) {
+        //访问服务器
+        if (requestCode == RBConstants.REQUEST_CODE_MarketDetail) {
+
+            Toast.makeText(App.appliction, "请求服务器成功" + pId, Toast.LENGTH_SHORT).show();
+            //请求成功的时候呢，需要将返回的response强转成ProductDetail的bean
+            ProductDetail productDetail = (ProductDetail) response;
+            productDetailHolder.bindData(productDetail.getProduct());
+        }
+    }
+
+    @Override
+    public void onGetResponseError(int requestCode, VolleyError error) {
+        Toast.makeText(getActivity(), "error:" + error.getMessage(), Toast.LENGTH_SHORT).show();
+    }
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        EventBus.getDefault().removeStickyEvent(true);
+    }
+}

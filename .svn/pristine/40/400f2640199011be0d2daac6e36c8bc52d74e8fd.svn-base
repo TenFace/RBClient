@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+               style="@style/mSrollView">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="39dp"
+            android:id="@+id/rl_homesearch"
+            android:background="@drawable/home_search3">
+        <EditText
+            android:id="@+id/et_sear"
+            android:layout_width="220dp"
+            android:layout_height="39dp"
+            android:background="@android:color/transparent"
+            android:layout_alignParentLeft="true"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="43dp"
+            android:hint="@string/please_input_product_name"
+            android:maxLength="26"
+            android:singleLine="true"/>
+            <ImageButton
+                android:id="@+id/ib_search"
+                android:layout_width="43.0dip"
+                android:layout_height="60.0dip"
+                android:background="@drawable/search_selector"
+                android:layout_centerVertical="true"
+                android:layout_alignParentRight="true"
+                android:layout_marginRight="10dip"/>
+        </RelativeLayout>
+        <RelativeLayout
+            android:layout_width="match_parent"
+
+            android:layout_height="117dp">
+            <android.support.v4.view.ViewPager
+                android:id="@+id/vp_home_viewpager"
+                android:layout_width="match_parent"
+                android:layout_centerHorizontal="true"
+                android:layout_height="match_parent">
+
+            </android.support.v4.view.ViewPager>
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/home_slide_ll"
+                android:layout_alignParentBottom="true"
+                android:layout_centerHorizontal="true"
+                android:layout_marginBottom="5dip" >
+
+                <ImageView
+                    android:id="@+id/home_imgPoint0"
+                    style="@style/slide"
+                    android:background="@drawable/slide_adv_selected" />
+
+                <ImageView
+                    android:id="@+id/home_imgPoint1"
+                    style="@style/slide"
+                    android:background="@drawable/slide_adv_normal" />
+
+                <ImageView
+                    android:id="@+id/home_imgPoint2"
+                    style="@style/slide"
+                    android:background="@drawable/slide_adv_normal" />
+
+
+                <ImageView
+                    android:id="@+id/home_imgPoint3"
+                    style="@style/slide"
+                    android:background="@drawable/slide_adv_normal" />
+
+                <ImageView
+                    android:id="@+id/home_imgPoint4"
+                    style="@style/slide"
+                    android:background="@drawable/slide_adv_normal" />
+                <ImageView
+                    android:id="@+id/home_imgPoint5"
+                    style="@style/slide"
+                    android:background="@drawable/slide_adv_normal" />
+
+            </LinearLayout>
+
+        </RelativeLayout>
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1px"
+            android:background="@color/home_item" />
+
+        <ListView
+            android:id="@+id/lv_home_listview"
+            android:layout_width="match_parent"
+            android:layout_height="330dp"
+            android:background="@color/home_item_normal"
+            android:divider="@color/home_item"
+            android:dividerHeight="1px"
+            android:scrollbars="none" />
+    </LinearLayout>
+
+
+
+
+</ScrollView>

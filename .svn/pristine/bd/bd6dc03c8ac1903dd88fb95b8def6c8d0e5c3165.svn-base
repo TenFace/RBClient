@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:id="@+id/rl_helpcenter_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            style="@style/title_tv_style"
+            android:text="新增地址" />
+
+        <Button
+            android:id="@+id/btn_back"
+            style="@style/title_btn_style"
+            android:layout_marginLeft="10dp"
+            android:background="@drawable/bar_head_button_bg"
+            android:text="地址管理" />
+
+        <Button
+            android:id="@+id/btn_next"
+            style="@style/title_btn_style"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="10dp"
+            android:background="@drawable/bar_head_button_bg"
+            android:text="保存" />
+    </RelativeLayout>
+
+    <LinearLayout
+        android:layout_marginTop="10dp"
+        style="@style/more_tab_rl_style"
+        android:layout_marginLeft="5dp"
+        android:layout_marginRight="5dp">
+        <TextView
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:textSize="18dp"
+            android:text="收货人:" />
+        <EditText
+            android:id="@+id/et_people"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@null"
+            android:layout_marginLeft="10dp"
+            android:hint="(必填)"/>
+    </LinearLayout>
+
+    <LinearLayout
+        style="@style/more_tab_rl_style"
+        android:layout_marginLeft="5dp"
+        android:layout_marginRight="5dp">
+        <TextView
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:textSize="18dp"
+            android:text="手机:" />
+        <EditText
+            android:id="@+id/et_number"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@null"
+            android:layout_marginLeft="10dp"
+            android:hint="(必填)"/>
+    </LinearLayout>
+
+    <LinearLayout
+        style="@style/more_tab_rl_style"
+        android:layout_marginLeft="5dp"
+        android:layout_marginRight="5dp">
+        <TextView
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:textSize="18dp"
+            android:text="省市区:" />
+        <EditText
+            android:id="@+id/et_address"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@null"
+            android:layout_marginLeft="10dp"
+            android:hint="(必填)"/>
+    </LinearLayout>
+
+    <LinearLayout
+        style="@style/more_tab_rl_style"
+        android:layout_marginLeft="5dp"
+        android:layout_marginRight="5dp">
+        <TextView
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:textSize="18dp"
+            android:text="详细地址:" />
+        <EditText
+            android:id="@+id/et_detailaddress"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@null"
+            android:layout_marginLeft="10dp"
+            android:hint="(必填)"/>
+    </LinearLayout>
+
+</LinearLayout>

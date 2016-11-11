@@ -1,0 +1,30 @@
+package com.itheima.rbclient.ui.fragment;
+
+import android.os.Bundle;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+
+import com.itheima.rbclient.R;
+
+
+public class HelpCenterFragment extends BaseFragment {
+	
+	protected static final String TAG = "BaseFragment";
+
+	@Override
+	protected View createView(LayoutInflater inflater, ViewGroup container,
+			Bundle savedInstanceState) {
+		
+		return inflater.inflate(R.layout.fragment_help_center, null);
+	}
+	
+	
+	@Override
+	public void onViewCreated(View view, Bundle savedInstanceState) {
+		super.onViewCreated(view, savedInstanceState);
+
+	}
+
+
+}

@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+   >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/item_classification"
+        android:gravity="center_vertical">
+        <TextView
+            android:id="@+id/classification_one_back"
+            android:onClick="ture"
+            android:layout_marginLeft="5dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:background="@drawable/bar_head_back_bg"
+            android:text="  返回"/>
+        <TextView
+            android:id="@+id/classification_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="分类浏览"
+            android:gravity="center_horizontal"
+            />
+
+    </LinearLayout>
+
+    <ListView
+        android:id="@+id/classification_listview"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"></ListView>
+</LinearLayout>

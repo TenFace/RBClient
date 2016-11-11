@@ -1,0 +1,290 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    style="@style/title_tv_style"
+                    android:text="结算中心" />
+
+                <Button
+                    android:id="@+id/btn_jiesuan_back"
+                    style="@style/title_btn_style"
+                    android:layout_marginLeft="10dp"
+                    android:background="@drawable/bar_head_button_bg"
+                    android:text="购物车" />
+
+                <Button
+                    android:id="@+id/btn_jiesuan_submit"
+                    style="@style/title_btn_style"
+                    android:layout_alignParentRight="true"
+                    android:layout_marginRight="10dp"
+                    android:background="@drawable/bar_head_button_bg"
+                    android:text="提交订单" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/rl_jiesuan_address"
+                style="@style/more_tab_rl_style"
+                android:layout_marginLeft="5dp"
+                android:layout_marginRight="5dp"
+                android:layout_marginTop="10dp">
+
+                <TextView
+                    style="@style/more_tab_tv_style"
+                    android:text="收货人信息" />
+
+                <ImageView
+                    style="@style/more_tab_iv_style"
+                    android:src="@drawable/arrow_right" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/rl_jiesuan_payway"
+                style="@style/more_tab_rl_style"
+                android:layout_marginLeft="5dp"
+                android:layout_marginRight="5dp"
+                android:layout_marginTop="10dp">
+
+                <TextView
+                    style="@style/more_tab_tv_style"
+                    android:text="支付方式" />
+
+                <ImageView
+                    style="@style/more_tab_iv_style"
+                    android:src="@drawable/arrow_right" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/rl_jiesuan_time"
+                style="@style/more_tab_rl_style"
+                android:layout_marginLeft="5dp"
+                android:layout_marginRight="5dp"
+                android:layout_marginTop="10dp">
+
+                <TextView
+                    style="@style/more_tab_tv_style"
+                    android:text="送货时间" />
+
+                <ImageView
+                    style="@style/more_tab_iv_style"
+                    android:src="@drawable/arrow_right" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/rl_jiesuan_courier"
+                style="@style/more_tab_rl_style"
+                android:layout_marginLeft="5dp"
+                android:layout_marginRight="5dp"
+                android:layout_marginTop="10dp">
+
+                <TextView
+                    style="@style/more_tab_tv_style"
+                    android:text="送货方式 :  快递" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/rl_jiesuan_coupon"
+                style="@style/more_tab_rl_style"
+                android:layout_marginLeft="5dp"
+                android:layout_marginRight="5dp"
+                android:layout_marginTop="10dp">
+
+                <TextView
+                    style="@style/more_tab_tv_style"
+                    android:text="使用优惠券 :  快递" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/rl_jiesuan_invoice"
+                style="@style/more_tab_rl_style"
+                android:layout_marginLeft="5dp"
+                android:layout_marginRight="5dp"
+                android:layout_marginTop="10dp">
+
+                <TextView
+                    style="@style/more_tab_tv_style"
+                    android:text="收取发票" />
+
+                <ImageView
+                    style="@style/more_tab_iv_style"
+                    android:src="@drawable/arrow_right" />
+            </RelativeLayout>
+
+            <TextView
+                style="@style/more_tab_tv_style"
+                android:layout_marginLeft="0dp"
+                android:layout_marginTop="10dp"
+                android:background="#22000000"
+                android:padding="10dp"
+                android:text="商品明细"
+                android:textColor="#000" />
+
+            <ListView
+                android:id="@+id/lv_jiesuan"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"></ListView>
+        </LinearLayout>
+
+    <LinearLayout
+        android:layout_marginTop="5dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:background="#22000000">
+
+        <RelativeLayout
+        android:padding="3dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="数量总计 :"
+            android:layout_marginLeft="10dp"
+            />
+        <TextView
+            android:id="@+id/tv_count_number"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="1件"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="10dp"/>
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:padding="3dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="原始金额 :"
+                android:layout_marginLeft="10dp"
+                />
+            <TextView
+                android:id="@+id/tv_count_origin"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="¥181.00"
+                android:layout_alignParentRight="true"
+                android:layout_marginRight="10dp"/>
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:padding="3dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="运费 :"
+                android:layout_marginLeft="10dp"
+                />
+            <TextView
+                android:id="@+id/tv_count_freight"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="¥10.00"
+                android:layout_alignParentRight="true"
+                android:layout_marginRight="10dp"/>
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:padding="3dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="促销优惠金额 :"
+                android:layout_marginLeft="10dp"
+                />
+            <TextView
+                android:id="@+id/tv_count_coupon"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="-¥30.00"
+                android:layout_alignParentRight="true"
+                android:layout_marginRight="10dp"/>
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:padding="3dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="应支付金额  :（不含运费）"
+                android:layout_marginLeft="10dp"
+                />
+            <TextView
+                android:id="@+id/tv_count_money"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="¥161.00"
+                android:layout_alignParentRight="true"
+                android:layout_marginRight="10dp"/>
+        </RelativeLayout>
+
+    </LinearLayout>
+
+    <TextView
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="5dp"
+        android:textSize="16sp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="您已享受到以下优惠 :"/>
+
+    <RelativeLayout
+        android:layout_marginLeft="5dp"
+        android:layout_marginRight="5dp"
+        android:padding="3dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/moro_tab_bg"
+        >
+
+        <TextView
+            android:gravity="center_horizontal"
+            android:layout_marginLeft="5dp"
+            android:textSize="16sp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="可享受的优惠活动信息(满增，满减)"/>
+
+    </RelativeLayout>
+
+    <Button
+        android:id="@+id/btn_jiesuan_commit"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="10dp"
+        android:paddingLeft="50dp"
+        android:paddingRight="50dp"
+        android:paddingTop="5dp"
+        android:paddingBottom="5dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="提交订单"
+        android:textColor="#fff"
+        android:background="#ff0000"/>
+
+
+</LinearLayout>
+</ScrollView>

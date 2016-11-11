@@ -1,0 +1,140 @@
+package com.itheima.rbclient.bean;
+
+import org.senydevpkg.net.resp.IResponse;
+
+import java.util.ArrayList;
+
+/**
+ * Created by xuan on 2016/8/7.
+ */
+public class OrderDetailResponse implements IResponse{
+
+    //"response": "orderDetail",
+    public String response;
+    /*"orderInfo":{
+        "orderId": " 098593 ",
+                "status": "未处理",
+                "time": " 1449107098604 ",
+                "flag":"1"
+    },*/
+    public OrderDetailInfo orderInfo;
+
+    public class OrderDetailInfo {
+        public String orderId;
+        public String status;
+        public String time;
+        public String flag;
+    }
+
+    /*"addressInfo": {
+        "id":"139",                   //地址簿ID
+                "name":"肖文",                //收货人姓名
+                "addressArea":"北京市海淀区",  //国家三级地址
+                "addressDetail":"闵庄路3号"    //地址详情
+    },*/
+    public AddressInfo addressInfo;
+
+    public class AddressInfo {
+        public String id;
+        public String name;
+        public String addressArea;
+        public String addressDetail;
+    }
+
+    /*"paymentInfo": {                //支付方式
+        "type":"1",                    //支付类型，1=>货到付款 2=>货到POS机
+                3=>支付宝(待定)
+    },*/
+
+    public PaymentInfo paymentInfo;
+
+    public class PaymentInfo {
+        public String type;
+    }
+    /*"deliveryInfo": {                //送货时间
+        "type":"1",                    //1 => 周一至周五送货 2=> 双休日及公众假期送货 3=> 时间不限，工作日双休日及公众假期均可送货
+    },*/
+    public DeliveryInfo deliveryInfo;
+
+    public class DeliveryInfo {
+        public String type;
+    }
+
+   /* "invoiceInfo": {                //发票信息
+        " invoiceTitle ":"传智慧播客教育科技有限公司",    //发票抬头
+                " invoiceContent ":"办公用品"            //发票内容
+    },*/
+
+    public InvoiceInfo invoiceInfo;
+
+    private class InvoiceInfo {
+        public String invoiceTitle;
+        public String invoiceContent;
+    }
+
+    /*"productList": [                 //商品列表
+    {
+        "prodNum": 3,
+            "product": {
+        "id":"1",              //商品ID
+                "name": "韩版时尚蕾丝裙",          //商品名称
+                "pic":"",                    //商品图片URL
+                "price":"350",                 //商品售价
+                "productProperty":[          //属性
+        {
+            “id”:0
+            "k": "颜色",
+                "v": "红色",
+        },
+        {
+            “id”:1
+            "k": "大小",
+                "v": "M",
+        }
+        ],
+    },*/
+
+    public ArrayList<ProductList> productList;
+
+    public class ProductList {
+        public String prodNum;
+        public Product product;
+    }
+
+    public class Product {
+        public String id;
+        public String name;
+        public String pic;
+        public String price;
+        public String number;
+        public String uplimit;
+        public ArrayList<ProductProperty> productProperty;
+    }
+
+    private class ProductProperty {
+        public int id;
+        public String k;
+        public String v;
+    }
+
+    /*"checkoutProm":[                 //享受促销信息
+            "促销信息一",
+            "促销信息二"
+            ],*/
+    public ArrayList<String> checkoutProm;
+    /*"checkoutAddup":{            //总计
+        "totalCount":"5",            //商品数量总计
+                "totalPrice":"1250",          //商品金额总计
+                "totalPoint":"30"，        //商品积分总计
+        "freight":"10"              //运费
+    }*/
+
+    public CheckoutAddup checkoutAddup;
+
+    private class CheckoutAddup {
+        public String totalCount;
+        public String totalPrice;
+        public String totalPoint;
+        public String freight;
+    }
+}

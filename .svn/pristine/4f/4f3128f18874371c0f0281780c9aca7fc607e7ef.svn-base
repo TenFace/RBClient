@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="50dp"
+    android:layout_centerVertical="true"
+    android:background="@drawable/product_detail_gallery"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/tv_total_num"
+        style="@style/Detail_Total"
+        android:text="数量总计：" />
+
+    <TextView
+        android:id="@+id/tv_send"
+        style="@style/Detail_Total"
+        android:text="赠送积分：" />
+
+    <TextView
+        android:id="@+id/tv_total_money"
+        style="@style/Detail_Total"
+        android:text="商品总金额（不含运费）：" />
+
+
+</LinearLayout>

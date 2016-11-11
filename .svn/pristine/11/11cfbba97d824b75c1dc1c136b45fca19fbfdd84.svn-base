@@ -1,0 +1,78 @@
+package com.itheima.rbclient.ui.fragment;
+
+import android.os.Bundle;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
+
+import com.itheima.rbclient.R;
+
+import butterknife.ButterKnife;
+import butterknife.InjectView;
+
+/**
+ * Created by lenovo on 2016/8/2.
+ */
+public class UserCenterFragment extends BaseFragment implements View.OnClickListener {
+
+    private TextView tvUsernameUser;
+    private TextView tvUsernameMember;
+    private TextView tvUsernamePoints;
+    private RelativeLayout rlUsernameOrder;
+    private RelativeLayout rlUsernameAddress;
+    private RelativeLayout rlUsernameCoupon;
+    private RelativeLayout rlUsernameFavorites;
+    private Button btnUsernameBack;
+    private Button btnUsernameLogout;
+
+    @Override
+    protected View createView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        View view = inflater.inflate(R.layout.fragment_user_center, null);
+        tvUsernameUser = (TextView) view.findViewById(R.id.tv_username_user);
+        tvUsernameMember = (TextView) view.findViewById(R.id.tv_username_member);
+        tvUsernamePoints = (TextView) view.findViewById(R.id.tv_username_points);
+        rlUsernameOrder = (RelativeLayout) view.findViewById(R.id.rl_username_order);
+        rlUsernameAddress = (RelativeLayout) view.findViewById(R.id.rl_username_address);
+        rlUsernameCoupon = (RelativeLayout) view.findViewById(R.id.rl_username_coupon);
+        rlUsernameFavorites = (RelativeLayout) view.findViewById(R.id.rl_username_favorites);
+        btnUsernameBack = (Button) view.findViewById(R.id.btn_username_back);
+        btnUsernameLogout = (Button) view.findViewById(R.id.btn_username_logout);
+
+        rlUsernameOrder.setOnClickListener(this);
+        rlUsernameAddress.setOnClickListener(this);
+        rlUsernameCoupon.setOnClickListener(this);
+        rlUsernameFavorites.setOnClickListener(this);
+        btnUsernameBack.setOnClickListener(this);
+        btnUsernameLogout.setOnClickListener(this);
+
+        return view;
+    }
+
+    @Override
+    public void onClick(View v) {
+        switch (v.getId()){
+            case R.id.btn_username_back:
+                //回退至更多
+                mMainActivity.switchFragment(FragmentInstanceManager.getInstance().getFragment(MoreFragment.class));
+                break;
+            case R.id.btn_username_logout:
+                //退出登录
+                break;
+            case R.id.rl_username_order:
+                //我的订单
+                break;
+            case R.id.rl_username_address:
+                //地址管理
+                break;
+            case R.id.rl_username_coupon:
+                //优惠券
+                break;
+            case R.id.rl_username_favorites:
+                //收藏夹
+                break;
+        }
+    }
+}

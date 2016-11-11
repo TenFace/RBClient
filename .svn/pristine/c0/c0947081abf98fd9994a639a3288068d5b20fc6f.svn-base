@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:id="@+id/rl_helpcenter_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            style="@style/title_tv_style"
+            android:text="地址列表" />
+
+        <Button
+            android:id="@+id/btn_back"
+            style="@style/title_btn_style"
+            android:layout_marginLeft="10dp"
+            android:background="@drawable/bar_head_button_bg"
+            android:text="结算中心" />
+
+        <Button
+            android:id="@+id/btn_next"
+            style="@style/title_btn_style"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="10dp"
+            android:background="@drawable/bar_head_button_bg"
+            android:text="新增地址" />
+    </RelativeLayout>
+
+    <ImageView
+        android:layout_marginTop="50dp"
+        android:layout_gravity="center"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/empty_img"/>
+
+    <TextView
+        android:textSize="16dp"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="20dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="您现在还没有添加地址哦！"/>
+
+</LinearLayout>

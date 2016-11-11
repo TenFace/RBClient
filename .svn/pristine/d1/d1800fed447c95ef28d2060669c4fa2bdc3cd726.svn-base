@@ -1,0 +1,12 @@
+package com.itheima.rbclient.bean;
+
+/**
+ * Created by Administrator on 2016/8/7.
+ */
+public class CartId {
+    private int id;
+
+    public CartId(int id) {
+        this.id = id;
+    }
+}

@@ -1,0 +1,275 @@
+package com.itheima.rbclient.ui.fragment;
+
+import android.graphics.Color;
+import android.graphics.drawable.Drawable;
+import android.os.Bundle;
+import android.support.annotation.Nullable;
+import android.support.v4.view.ViewPager;
+import android.util.Log;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.view.animation.OvershootInterpolator;
+import android.widget.AdapterView;
+import android.widget.BaseAdapter;
+import android.widget.Button;
+import android.widget.FrameLayout;
+import android.widget.RadioGroup;
+import android.widget.TextView;
+import android.widget.Toast;
+
+import com.android.volley.VolleyError;
+import com.itheima.rbclient.App;
+import com.itheima.rbclient.R;
+import com.itheima.rbclient.RBConstants;
+import com.itheima.rbclient.adapter.OrderFormViewPagerAdapter;
+import com.itheima.rbclient.bean.OrderDetailResponse;
+import com.itheima.rbclient.bean.OrderlistResponse;
+import com.itheima.rbclient.protocol.OrderDetailProtocol;
+import com.itheima.rbclient.protocol.OrderInfoProtocol;
+import com.itheima.rbclient.util.DrawableUtil;
+import com.itheima.rbclient.widget.OrderRefreshListView;
+import com.nineoldandroids.view.ViewHelper;
+import com.nineoldandroids.view.ViewPropertyAnimator;
+
+import org.greenrobot.eventbus.EventBus;
+import org.senydevpkg.net.HttpLoader;
+import org.senydevpkg.net.HttpParams;
+import org.senydevpkg.net.resp.IResponse;
+
+import java.util.ArrayList;
+
+import butterknife.ButterKnife;
+
+/**
+ * 订单列表
+ * Created by xuan on 2016/8/4.
+ */
+public class MyOrderFormFragment extends BaseFragment implements HttpLoader.HttpListener, RadioGroup.OnCheckedChangeListener {
+
+    private ArrayList<OrderlistResponse.OrderInfo> list = new ArrayList<>();
+    private String type = "1";
+    private String page = "0";
+
+    private String  pageNum = "10";
+    private FrameLayout fl_container_orderlist;
+    private OrderRefreshListView listView;
+    private OrderListViewAdapter adapter;
+
+    @Override
+    public void onCreate(@Nullable Bundle savedInstanceState) {
+        initDate();
+        super.onCreate(savedInstanceState);
+
+    }
+
+    @Override
+    protected View createView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        View view = inflater.inflate(R.layout.fragment_order_list,null);
+        initTitle(view);
+        fl_container_orderlist = (FrameLayout) view.findViewById(R.id.fl_container_orderlist);
+
+        listView = (OrderRefreshListView) View.inflate(getActivity(), R.layout.listview_order,null);
+        adapter = new OrderListViewAdapter();
+        listView.setAdapter(adapter);
+        /**
+         * 加载更多
+         */
+        listView.setOnRefreshListener(new OrderRefreshListView.OnRefreshListener() {
+            @Override
+            public void onLoadMore() {
+                //让请求的页数加1
+                page += 1;
+                //请求数据
+                downloadDate(page);
+                listView.setSelection(adapter.getCount() - 1);
+            }
+        });
+
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                OrderlistResponse.OrderInfo info = (OrderlistResponse.OrderInfo) adapter.getItem(position);
+                sendRequestAndSwitch(info.orderId);
+            }
+        });
+        //获取radiogroup
+        RadioGroup radioGroup = (RadioGroup) view.findViewById(R.id.rg_order);
+        radioGroup.setOnCheckedChangeListener(this);
+
+        return view;
+    }
+
+    /**初始化标题*/
+    private void initTitle(View view) {
+        TextView tv_title = (TextView) view.findViewById(R.id.tv_title);
+        Button btn_title_left = (Button) view.findViewById(R.id.btn_title_left);
+        Button btn_title_right = (Button) view.findViewById(R.id.btn_title_right);
+        tv_title.setText("我的订单");
+        btn_title_left.setText("账户中心");
+        btn_title_left.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                swichToChildFragment(FragmentInstanceManager.getInstance().getFragment(UserCenterFragment.class),false);
+            }
+        });
+        btn_title_right.setVisibility(View.GONE);
+    }
+
+    private void sendRequestAndSwitch(String orderId) {
+        new OrderDetailProtocol(orderId).doRequest(App.HL,this);
+    }
+
+    private void downloadDate(String page) {
+        new OrderInfoProtocol(type,page,pageNum).doRequest(App.HL,this).setTag(this);
+    }
+
+    private void initDate() {
+        //请求数据
+        new OrderInfoProtocol(type,page,pageNum).doRequest(App.HL,this).setTag(this);
+    }
+
+
+    @Override
+    public void onGetResponseSuccess(int requestCode, IResponse response) {
+        if (requestCode == RBConstants.REQUEST_CODE_ORDERLIST){
+            OrderlistResponse orderlistResponse = (OrderlistResponse) response;
+            if ("error".equals(orderlistResponse.response)){
+                Toast.makeText(getActivity(),orderlistResponse.error,Toast.LENGTH_SHORT).show();
+            }else {
+
+                list.addAll(orderlistResponse.orderList);
+                //根据list显示不同的布局
+                if (list == null || list.size() == 0){
+                    fl_container_orderlist.removeAllViews();
+                    TextView textView = (TextView) View.inflate(getActivity(),R.layout.textview_order,null);
+                    fl_container_orderlist.addView(textView);
+                }else {
+                    if (orderlistResponse.orderList == null){
+                        Toast.makeText(getActivity(),"nomore",Toast.LENGTH_SHORT).show();
+                        return;
+                    }
+                    fl_container_orderlist.removeAllViews();
+                    adapter.notifyDataSetChanged();
+                    fl_container_orderlist.addView(listView);
+                }
+            }
+
+        }else if (requestCode == RBConstants.REQUEST_CODE_ORDERDETAIL){
+            OrderDetailResponse orderDetailResponse = (OrderDetailResponse) response;
+            if ("error".equals(orderDetailResponse.response)){
+                Toast.makeText(getActivity(),orderDetailResponse.error,Toast.LENGTH_SHORT).show();
+            }else {
+
+                swichToChildFragment(FragmentInstanceManager.getInstance().getFragment(OrderDetailFragment.class),true);
+                EventBus.getDefault().postSticky(orderDetailResponse);
+            }
+        }
+    }
+
+    @Override
+    public void onGetResponseError(int requestCode, VolleyError error) {
+        Toast.makeText(getActivity(),"服务器未响应",Toast.LENGTH_SHORT).show();
+    }
+
+    /**
+     * 单选选择,近一个月订单,一个月前订单,已取消
+     * @param group
+     * @param checkedId
+     */
+    @Override
+    public void onCheckedChanged(RadioGroup group, int checkedId) {
+        switch (checkedId){
+            case R.id.rb_lastmonth:
+                fl_container_orderlist.removeAllViews();
+                //清空集合
+                list.clear();
+                Log.d("ddd", "isme");
+                new OrderInfoProtocol("1","0",pageNum).doRequest(App.HL,this).setTag(this);
+                type = "1";
+                break;
+            case R.id.rb_month_ago:
+                fl_container_orderlist.removeAllViews();
+                list.clear();
+                new OrderInfoProtocol("2","0",pageNum).doRequest(App.HL,this).setTag(this);
+                type = "2";
+                break;
+            case R.id.rb_hasgone:
+                fl_container_orderlist.removeAllViews();
+                list.clear();
+                new OrderInfoProtocol("3","0",pageNum).doRequest(App.HL,this).setTag(this);
+                type = "3";
+                break;
+        }
+
+
+    }
+
+    private class OrderListViewAdapter extends BaseAdapter{
+        @Override
+        public int getCount() {
+            return list.size();
+        }
+
+        @Override
+        public Object getItem(int position) {
+            return list.get(position);
+        }
+
+        @Override
+        public long getItemId(int position) {
+            return position;
+        }
+
+        @Override
+        public View getView(int position, View convertView, ViewGroup parent) {
+
+                HolderView holderView = null;
+                if (convertView == null) {//没有缓存对象
+                    holderView = new HolderView();
+                    convertView = View.inflate(getActivity(), R.layout.item_listview_order, null);
+                    holderView.tv_order_id = (TextView) convertView.findViewById(R.id.tv_order_id);
+                    holderView.tv_order_price = (TextView) convertView.findViewById(R.id.tv_order_price);
+                    holderView.tv_order_state = (TextView) convertView.findViewById(R.id.tv_order_state);
+                    holderView.tv_order_time = (TextView) convertView.findViewById(R.id.tv_order_time);
+
+                    convertView.setBackgroundDrawable(getDrawable());
+                    convertView.setTag(holderView);
+                } else {//有缓存对象
+                    holderView = (HolderView) convertView.getTag();
+                }
+
+                OrderlistResponse.OrderInfo info = (OrderlistResponse.OrderInfo) list.get(position);
+                holderView.tv_order_id.setText(info.orderId);
+                holderView.tv_order_price.setText(info.price);
+                holderView.tv_order_state.setText(info.status);
+                holderView.tv_order_time.setText(info.time);
+            // 4.增加炫酷动画
+            // 一开始缩小
+            ViewHelper.setScaleX(convertView, 0.8f);
+            ViewHelper.setScaleY(convertView, 0.8f);
+            // 执行放大动画
+            ViewPropertyAnimator.animate(convertView).scaleX(1f).setDuration(400)
+                    .setInterpolator(new OvershootInterpolator()).start();
+            ViewPropertyAnimator.animate(convertView).scaleY(1f).setDuration(400)
+                    .setInterpolator(new OvershootInterpolator()).start();
+                return convertView;
+        }
+
+        private Drawable getDrawable() {
+            float[] radii = {20,20,20,20,20,20,20,20};
+            return DrawableUtil.generateDrawable(Color.BLACK,radii);
+        }
+    }
+    static class HolderView{
+        //订单id
+        TextView tv_order_id;
+        //订单价格
+        TextView tv_order_price;
+        //订单状态
+        TextView tv_order_state;
+        //订单生成的时间
+        TextView tv_order_time;
+
+    }
+}

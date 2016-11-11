@@ -1,0 +1,18 @@
+[
+    {
+        "merged": "D:\\AndroidStudioProjects\\RBClient\\viewPagerIndicator_library\\build\\intermediates\\res\\merged\\debug\\drawable\\vpi__tab_textcolor.xml",
+        "source": "D:\\AndroidStudioProjects\\RBClient\\viewPagerIndicator_library\\src\\main\\res\\drawable\\vpi__tab_textcolor.xml"
+    },
+    {
+        "merged": "D:\\AndroidStudioProjects\\RBClient\\viewPagerIndicator_library\\build\\intermediates\\res\\merged\\debug\\drawable\\vpi__tab_indicator.xml",
+        "source": "D:\\AndroidStudioProjects\\RBClient\\viewPagerIndicator_library\\src\\main\\res\\drawable\\vpi__tab_indicator.xml"
+    },
+    {
+        "merged": "E:\\studio\\RBClient\\viewPagerIndicator_library\\build\\intermediates\\res\\merged\\debug\\drawable\\vpi__tab_indicator.xml",
+        "source": "E:\\studio\\RBClient\\viewPagerIndicator_library\\src\\main\\res\\drawable\\vpi__tab_indicator.xml"
+    },
+    {
+        "merged": "E:\\studio\\RBClient\\viewPagerIndicator_library\\build\\intermediates\\res\\merged\\debug\\drawable\\vpi__tab_textcolor.xml",
+        "source": "E:\\studio\\RBClient\\viewPagerIndicator_library\\src\\main\\res\\drawable\\vpi__tab_textcolor.xml"
+    }
+]

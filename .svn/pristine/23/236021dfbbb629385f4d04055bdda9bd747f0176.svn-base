@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            style="@style/title_tv_style"
+            android:text="填写发票信息" />
+
+        <Button
+            android:id="@+id/btn_invoice_back"
+            style="@style/title_btn_style"
+            android:text="结算中心" />
+
+        <Button
+            android:id="@+id/btn_invoice_add"
+            style="@style/title_btn_style"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="10dp"
+            android:text="添加" />
+    </RelativeLayout>
+
+    <ScrollView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:id="@+id/ll_invoice"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:padding="10dp">
+
+            <TextView
+                style="@style/more_tab_tv_style"
+                android:text="发票抬头" />
+
+            <RelativeLayout
+                android:id="@+id/rl_invoice_head_person"
+                style="@style/more_tab_rl_style"
+                android:gravity="center_vertical"
+                android:clickable="true">
+
+                <TextView
+                    style="@style/username_tab_tv_style"
+                    android:text="个人" />
+
+                <ImageView
+                    android:id="@+id/iv_invoice_head_person"
+                    style="@style/more_tab_iv_style"
+                    android:visibility="invisible"
+                    android:src="@drawable/duigou" />
+            </RelativeLayout>
+            <RelativeLayout
+                android:id="@+id/rl_invoice_head_company"
+                style="@style/more_tab_rl_style"
+                android:gravity="center_vertical"
+                android:clickable="true">
+
+                <TextView
+                    style="@style/username_tab_tv_style"
+                    android:text="单位" />
+
+                <ImageView
+                    android:id="@+id/iv_invoice_head_company"
+                    android:visibility="invisible"
+                    style="@style/more_tab_iv_style"
+                    android:src="@drawable/duigou" />
+            </RelativeLayout>
+            <TextView
+                style="@style/more_tab_tv_style"
+                android:text="发票抬头" />
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>

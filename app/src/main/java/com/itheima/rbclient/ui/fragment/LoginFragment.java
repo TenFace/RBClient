@@ -1,0 +1,157 @@
+package com.itheima.rbclient.ui.fragment;
+
+import android.graphics.Paint;
+import android.os.Bundle;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.TextView;
+import android.widget.Toast;
+
+import com.android.volley.VolleyError;
+import com.itheima.rbclient.App;
+import com.itheima.rbclient.R;
+import com.itheima.rbclient.RBConstants;
+import com.itheima.rbclient.bean.LoginResponse;
+import com.itheima.rbclient.util.PrefUtils;
+
+import org.senydevpkg.net.HttpLoader;
+import org.senydevpkg.net.HttpParams;
+import org.senydevpkg.net.resp.IResponse;
+
+import butterknife.ButterKnife;
+import butterknife.InjectView;
+
+/**
+ * Created by xuan on 2016/8/3.
+ */
+public class LoginFragment extends BaseFragment implements HttpLoader.HttpListener, View.OnClickListener {
+    @InjectView(R.id.et_username)
+    EditText et_Username;
+    @InjectView(R.id.et_password)
+    EditText et_Password;
+    @InjectView(R.id.btn_login)
+    Button btn_Login;
+    @InjectView(R.id.tv_go_register)
+    TextView tv_go_register;
+    private String username;
+    private String username1;
+    private String password;
+    private TextView tv_title;
+    private Button bt_title_left;
+    private Button bt_title_right;
+
+    @Override
+    protected View createView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        View view = inflater.inflate(R.layout.fragment_login, null);
+        initTitle(view);
+
+        ButterKnife.inject(this, view);
+
+        initView();
+
+        //登录按钮
+        btn_Login.setOnClickListener(this);
+        //跳转到注册页面
+        tv_go_register.setOnClickListener(this);
+        return view;
+    }
+
+    /**初始化标题*/
+    private void initTitle(View view) {
+        //标题
+        tv_title = (TextView) view.findViewById(R.id.tv_title);
+        bt_title_left = (Button) view.findViewById(R.id.btn_title_left);
+        bt_title_right = (Button) view.findViewById(R.id.btn_title_right);
+
+        tv_title.setText("登录");
+        bt_title_left.setVisibility(View.GONE);
+        bt_title_right.setVisibility(View.GONE);
+    }
+
+
+    /**获得输入的用户名和密码*/
+    private void getUsernameAndPassword() {
+        username = et_Username.getText().toString().trim();
+        password = et_Password.getText().toString().trim();
+
+    }
+
+    private boolean checkoutUsernameAndPassword(String username, String password) {
+        if (username != null && password != null){
+            return true;
+        }else {
+            return false;
+        }
+    }
+
+    /**
+     * 给布局增加样式
+     */
+    private void initView() {
+        //给tv_go_register添加下划线
+        tv_go_register.getPaint().setFlags(Paint.UNDERLINE_TEXT_FLAG);
+    }
+
+    @Override
+    public void onDestroyView() {
+        super.onDestroyView();
+    }
+
+    @Override
+    public void onGetResponseSuccess(int requestCode, IResponse response) {
+        if (requestCode == RBConstants.REQUEST_CODE_LOGIN) {
+            LoginResponse loginResponse = (LoginResponse) response;
+            //首先判断response返回的response字段是否为login
+
+            if ("error".equals(loginResponse.response)){//登录失败
+                Toast.makeText(getActivity(),loginResponse.error,Toast.LENGTH_SHORT).show();
+            }else { //登录成功
+                //得到返回的userid
+                int userid = loginResponse.userInfo.userid;
+                //将userid用sharepreference记录下来
+                PrefUtils.putInt(getActivity(), RBConstants.USERID, userid);
+                //同样将用户名存储下来
+                PrefUtils.putString(getActivity(),RBConstants.USERNAME,username);
+
+                //跳转至账户中心页面
+                swichToChildFragment(FragmentInstanceManager.getInstance().getFragment(UserCenterFragment.class),true);
+            }
+        }
+    }
+
+    @Override
+    public void onGetResponseError(int requestCode, VolleyError error) {
+        Toast.makeText(getActivity(),"error : "+"服务器未响应",Toast.LENGTH_SHORT).show();
+    }
+
+    @Override
+    public void onClick(View v) {
+        switch (v.getId()){
+            case R.id.btn_login:
+                //获得输入的用户名和密码
+                getUsernameAndPassword();
+                //校验用户名密码并且发送网络请求
+                checkoutAndSendRequest();
+                break;
+            case R.id.tv_go_register:
+                swichToChildFragment(FragmentInstanceManager.getInstance().getFragment(RegisterFragment.class),true);
+                break;
+        }
+    }
+
+    private void checkoutAndSendRequest() {
+        //对用户名和密码进行校验,不能为空
+        if (checkoutUsernameAndPassword(username,password)) {
+            HttpParams params = new HttpParams();
+            params.put("username", username);
+            params.put("password", password);
+            App.HL.post(RBConstants.URL_LOGIN, params, LoginResponse.class,
+                    RBConstants.REQUEST_CODE_LOGIN, LoginFragment.this);
+        }else {
+            Toast.makeText(getActivity(),"用户名密码不能为空",Toast.LENGTH_SHORT).show();
+        }
+    }
+}

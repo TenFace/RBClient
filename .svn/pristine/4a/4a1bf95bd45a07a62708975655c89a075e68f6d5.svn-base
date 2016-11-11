@@ -1,0 +1,26 @@
+[
+    {
+        "merged": "D:\\AndroidStudioProjects\\RBClient\\viewPagerIndicator_library\\build\\intermediates\\res\\merged\\androidTest\\debug\\color\\vpi__light_theme.xml",
+        "source": "D:\\AndroidStudioProjects\\RBClient\\viewPagerIndicator_library\\build\\intermediates\\bundles\\debug\\res\\color\\vpi__light_theme.xml"
+    },
+    {
+        "merged": "D:\\AndroidStudioProjects\\RBClient\\viewPagerIndicator_library\\build\\intermediates\\res\\merged\\androidTest\\debug\\color\\vpi__tab_textcolor.xml",
+        "source": "D:\\AndroidStudioProjects\\RBClient\\viewPagerIndicator_library\\build\\intermediates\\bundles\\debug\\res\\color\\vpi__tab_textcolor.xml"
+    },
+    {
+        "merged": "D:\\AndroidStudioProjects\\RBClient\\viewPagerIndicator_library\\build\\intermediates\\res\\merged\\androidTest\\debug\\color\\vpi__dark_theme.xml",
+        "source": "D:\\AndroidStudioProjects\\RBClient\\viewPagerIndicator_library\\build\\intermediates\\bundles\\debug\\res\\color\\vpi__dark_theme.xml"
+    },
+    {
+        "merged": "E:\\studio\\RBClient\\viewPagerIndicator_library\\build\\intermediates\\res\\merged\\androidTest\\debug\\color\\vpi__tab_textcolor.xml",
+        "source": "E:\\studio\\RBClient\\viewPagerIndicator_library\\build\\intermediates\\bundles\\debug\\res\\color\\vpi__tab_textcolor.xml"
+    },
+    {
+        "merged": "E:\\studio\\RBClient\\viewPagerIndicator_library\\build\\intermediates\\res\\merged\\androidTest\\debug\\color\\vpi__light_theme.xml",
+        "source": "E:\\studio\\RBClient\\viewPagerIndicator_library\\build\\intermediates\\bundles\\debug\\res\\color\\vpi__light_theme.xml"
+    },
+    {
+        "merged": "E:\\studio\\RBClient\\viewPagerIndicator_library\\build\\intermediates\\res\\merged\\androidTest\\debug\\color\\vpi__dark_theme.xml",
+        "source": "E:\\studio\\RBClient\\viewPagerIndicator_library\\build\\intermediates\\bundles\\debug\\res\\color\\vpi__dark_theme.xml"
+    }
+]

@@ -1,0 +1,19 @@
+package com.itheima.rbclient.ui.fragment;
+
+import android.os.Bundle;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+
+import com.itheima.rbclient.R;
+
+/**
+ * Created by xuan on 2016/8/7.
+ */
+public class OrderDetailFragment extends BaseFragment{
+    @Override
+    protected View createView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        View view = View.inflate(getActivity(), R.layout.fragment_order_detail,null);
+        return view;
+    }
+}

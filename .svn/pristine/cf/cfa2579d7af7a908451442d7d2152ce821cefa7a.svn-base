@@ -1,0 +1,43 @@
+package com.itheima.rbclient.ui.fragment;
+
+import android.os.Bundle;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.RelativeLayout;
+
+import com.itheima.rbclient.R;
+
+import butterknife.ButterKnife;
+import butterknife.InjectView;
+
+
+public class HelpCenterFragment extends BaseFragment {
+
+    protected static final String TAG = "BaseFragment";
+    @InjectView(R.id.btn_helpcenter_back)
+    Button btnHelpcenterBack;
+    @InjectView(R.id.rl_helpcenter_guide)
+    RelativeLayout rlHelpcenterGuide;
+    @InjectView(R.id.rl_helpcenter_aftersale)
+    RelativeLayout rlHelpcenterAftersale;
+    @InjectView(R.id.rl_helpcenter_distribution)
+    RelativeLayout rlHelpcenterDistribution;
+
+    @Override
+    protected View createView(LayoutInflater inflater, ViewGroup container,
+                              Bundle savedInstanceState) {
+        View view = inflater.inflate(R.layout.fragment_help_center, null);
+        ButterKnife.inject(view);
+        return view;
+    }
+
+
+    @Override
+    public void onViewCreated(View view, Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+
+    }
+
+}

@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="#88999999"
+    android:orientation="vertical"
+    android:padding="5dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="2dp"
+        android:orientation="horizontal">
+
+        <TextView
+            style="@style/orderdetail_content_left"
+            android:text="数量总计" />
+
+        <TextView
+            android:id="@+id/tv_order_totalnum"
+            style="@style/orderdetail_content_right"
+            android:gravity="right"
+            android:text="2" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="2dp"
+        android:orientation="horizontal">
+
+        <TextView
+            style="@style/orderdetail_content_left"
+            android:text="原始金额" />
+
+        <TextView
+            android:id="@+id/tv_order_yuanshijine"
+            style="@style/orderdetail_content_right"
+            android:gravity="right"
+            android:text="2" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="2dp"
+        android:orientation="horizontal">
+
+        <TextView
+            style="@style/orderdetail_content_left"
+            android:text="运费" />
+
+        <TextView
+            android:id="@+id/tv_order_yunfei"
+            style="@style/orderdetail_content_right"
+            android:gravity="right"
+            android:text="2" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="2dp"
+        android:orientation="horizontal">
+
+        <TextView
+            style="@style/orderdetail_content_left"
+            android:text="促销优惠金额" />
+
+        <TextView
+            android:id="@+id/tv_order_youhuijine"
+            style="@style/orderdetail_content_right"
+            android:gravity="right"
+            android:text="2" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="2dp"
+        android:orientation="horizontal">
+
+        <TextView
+            style="@style/orderdetail_content_left"
+            android:text="应付金额" />
+
+        <TextView
+            android:id="@+id/tv_order_shijijine"
+            style="@style/orderdetail_content_right"
+            android:gravity="right"
+            android:text="2" />
+    </LinearLayout>
+
+</LinearLayout>

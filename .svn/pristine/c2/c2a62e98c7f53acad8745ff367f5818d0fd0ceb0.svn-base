@@ -1,0 +1,67 @@
+package com.itheima.rbclient.ui.fragment;
+
+import android.os.Bundle;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.RelativeLayout;
+
+import com.itheima.rbclient.R;
+
+import butterknife.ButterKnife;
+import butterknife.InjectView;
+
+
+public class HelpCenterFragment extends BaseFragment implements View.OnClickListener {
+
+    protected static final String TAG = "BaseFragment";
+    private Button btnHelpcenterBack;
+    private RelativeLayout rlHelpcenterGuide;
+    private RelativeLayout rlHelpcenterAftersale;
+    private RelativeLayout rlHelpcenterDistribution;
+
+    @Override
+    protected View createView(LayoutInflater inflater, ViewGroup container,
+                              Bundle savedInstanceState) {
+        View view = inflater.inflate(R.layout.fragment_help_center, null);
+        ButterKnife.inject(view);
+
+        btnHelpcenterBack = (Button) view.findViewById(R.id.btn_helpcenter_back);
+        rlHelpcenterGuide = (RelativeLayout) view.findViewById(R.id.rl_helpcenter_guide);
+        rlHelpcenterAftersale = (RelativeLayout) view.findViewById(R.id.rl_helpcenter_aftersale);
+        rlHelpcenterDistribution = (RelativeLayout) view.findViewById(R.id.rl_helpcenter_distribution);
+
+        btnHelpcenterBack.setOnClickListener(this);
+        rlHelpcenterGuide.setOnClickListener(this);
+        rlHelpcenterAftersale.setOnClickListener(this);
+        rlHelpcenterDistribution.setOnClickListener(this);
+        return view;
+    }
+
+
+    @Override
+    public void onViewCreated(View view, Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+
+    }
+
+    @Override
+    public void onClick(View v) {
+        switch (v.getId()){
+            case R.id.btn_helpcenter_back:
+                //回退上一级
+                mMainActivity.switchFragment(FragmentInstanceManager.getInstance().getFragment(MoreFragment.class));
+                break;
+            case R.id.rl_helpcenter_guide:
+                //进入购物指南
+                break;
+            case R.id.rl_helpcenter_aftersale:
+                //进入售后服务
+                break;
+            case R.id.rl_helpcenter_distribution:
+                //进入配送方式
+                break;
+        }
+    }
+}

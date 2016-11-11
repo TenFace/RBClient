@@ -1,0 +1,79 @@
+package com.itheima.rbclient.ui.fragment;
+
+import android.os.Bundle;
+import android.util.Log;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.TextView;
+import android.widget.Toast;
+
+import com.android.volley.VolleyError;
+import com.itheima.rbclient.App;
+import com.itheima.rbclient.R;
+import com.itheima.rbclient.RBConstants;
+import com.itheima.rbclient.bean.LoginResponse;
+
+import org.senydevpkg.net.HttpLoader;
+import org.senydevpkg.net.HttpParams;
+import org.senydevpkg.net.resp.IResponse;
+import org.senydevpkg.utils.ALog;
+
+import butterknife.ButterKnife;
+import butterknife.InjectView;
+import butterknife.OnClick;
+
+
+public class HomeFragment extends BaseFragment implements HttpLoader.HttpListener {
+    @InjectView(R.id.textView1)
+    TextView mTextView1;
+    @InjectView(R.id.btn_home_topic)
+    Button mBtnHomeTopic;
+
+
+    @Override
+    protected View createView(LayoutInflater inflater, ViewGroup container,
+                              Bundle savedInstanceState) {
+        View view = inflater.inflate(R.layout.fragment_home, null);
+        ButterKnife.inject(this, view);
+        return view;
+    }
+
+
+    @Override
+    public void onDestroyView() {
+        super.onDestroyView();
+        ButterKnife.reset(this);
+    }
+
+
+    @OnClick({R.id.textView1, R.id.btn_home_topic})
+    public void onClick(View view) {
+        switch (view.getId()) {
+            case R.id.textView1:
+                String username = "test";
+                String pwd = "test";
+                HttpParams p = new HttpParams().put("username", username).put("password", pwd);
+                App.HL.post(RBConstants.URL_LOGIN,p,LoginResponse.class, RBConstants.REQUEST_CODE_LOGIN, this);
+
+                break;
+            case R.id.btn_home_topic:
+                swichToChildFragment(FragmentInstanceManager.getInstance().getFragment(TopicFragment.class), true);
+                break;
+        }
+    }
+
+    @Override
+    public void onGetResponseSuccess(int requestCode, IResponse response) {
+        if (requestCode == RBConstants.REQUEST_CODE_LOGIN) {
+            LoginResponse loginResponse = (LoginResponse) response;
+            ALog.e("----userid---" + loginResponse.userInfo.userid);
+        }
+    }
+
+    @Override
+    public void onGetResponseError(int requestCode, VolleyError error) {
+
+    }
+}

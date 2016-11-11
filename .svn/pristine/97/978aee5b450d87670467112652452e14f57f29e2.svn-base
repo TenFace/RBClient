@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <TextView
+        android:id="@+id/tv_title"
+        style="@style/title_tv_style"
+        android:text="账户中心" />
+
+    <Button
+        android:id="@+id/btn_title_left"
+        style="@style/title_btn_style"
+        android:text="更多" />
+
+    <Button
+        android:id="@+id/btn_title_right"
+        style="@style/title_btn_style"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="10dp"
+        android:text="推出登陆" />
+
+</RelativeLayout>

@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/tv_newaddress_title"
+            style="@style/title_tv_style"
+            android:text="新增地址" />
+
+        <Button
+            android:id="@+id/btn_address"
+            style="@style/title_btn_style"
+            android:text="管理地址" />
+
+        <Button
+            android:id="@+id/btn_newaddress_save"
+            style="@style/title_btn_style"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="10dp"
+            android:text="保存" />
+    </RelativeLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="15dp"
+        android:orientation="vertical">
+
+        <LinearLayout
+            style="@style/address_ll_style"
+            android:background="@drawable/first">
+
+            <TextView
+                style="@style/more_tab_tv_style"
+                android:layout_width="wrap_content"
+                android:text="收货人:" />
+
+            <EditText
+                android:id="@+id/et_newaddress_user"
+                style="@style/address_et_style" />
+
+            <ImageView
+                android:id="@+id/iv_newaddress_user_clear"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingRight="10dp"
+                android:src="@drawable/clear_text"
+                android:visibility="gone" />
+        </LinearLayout>
+
+        <LinearLayout style="@style/address_ll_style">
+
+            <TextView
+                style="@style/more_tab_tv_style"
+                android:layout_width="wrap_content"
+                android:text="手机:" />
+
+            <EditText
+                android:id="@+id/et_newaddress_phone"
+                style="@style/address_et_style" />
+
+            <ImageView
+                android:id="@+id/iv_newaddress_phone_clear"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingRight="10dp"
+                android:src="@drawable/clear_text"
+                android:visibility="gone" />
+        </LinearLayout>
+
+        <LinearLayout style="@style/address_ll_style">
+
+            <TextView
+                style="@style/more_tab_tv_style"
+                android:layout_width="wrap_content"
+                android:text="邮编:" />
+
+            <EditText
+                android:id="@+id/et_newaddress_zipcode"
+                style="@style/address_et_style" />
+
+            <ImageView
+                android:id="@+id/iv_newaddress_zipcode_clear"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingRight="10dp"
+                android:src="@drawable/clear_text"
+                android:visibility="gone" />
+        </LinearLayout>
+
+        <LinearLayout style="@style/address_ll_style">
+
+            <TextView
+                style="@style/more_tab_tv_style"
+                android:layout_width="wrap_content"
+                android:text="省市区:" />
+
+            <TextView
+                android:id="@+id/tv_newaddress_provider"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:hint="(必填)"
+                android:textSize="18sp" />
+        </LinearLayout>
+
+        <LinearLayout
+            style="@style/address_ll_style"
+            android:background="@drawable/last">
+
+            <TextView
+                style="@style/more_tab_tv_style"
+                android:layout_width="wrap_content"
+                android:text="详细地址:" />
+
+            <EditText
+                android:id="@+id/et_newaddress_detail"
+                style="@style/address_et_style" />
+
+            <ImageView
+                android:id="@+id/iv_newaddress_detail_clear"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingRight="10dp"
+                android:src="@drawable/clear_text"
+                android:visibility="gone" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/btn_newaddress_default"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:layout_gravity="center_horizontal"
+        android:background="@drawable/button_add_cart_selector"
+        android:text="设为默认地址"
+        android:textColor="@color/textview_market_detail"
+        android:visibility="gone"/>
+
+    <Button
+        android:id="@+id/btn_newaddress_delete"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:layout_gravity="center_horizontal"
+        android:background="@drawable/button_add_cart_selector"
+        android:text="删除此地址"
+        android:textColor="@color/textview_market_detail"
+        android:visibility="gone"/>
+
+</LinearLayout>

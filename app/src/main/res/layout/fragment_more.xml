@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/tv_more_title"
+        style="@style/title_tv_style"
+        android:text="更多" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tv_more_title"
+        android:layout_margin="15dp"
+        android:orientation="vertical">
+
+        <RelativeLayout
+            android:id="@+id/rl_more_username"
+            style="@style/more_tab_rl_style">
+
+            <TextView
+                style="@style/more_tab_tv_style"
+                android:text="账户中心" />
+
+            <ImageView
+                style="@style/more_tab_iv_style"
+                android:src="@drawable/arrow_right" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/rl_more_record"
+            style="@style/more_tab_rl_style">
+
+            <TextView
+                style="@style/more_tab_tv_style"
+                android:text="浏览记录" />
+
+            <ImageView
+                style="@style/more_tab_iv_style"
+                android:src="@drawable/arrow_right" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/rl_more_help"
+            style="@style/more_tab_rl_style">
+
+            <TextView
+                style="@style/more_tab_tv_style"
+                android:text="帮助中心" />
+
+            <ImageView
+                style="@style/more_tab_iv_style"
+                android:src="@drawable/arrow_right" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/rl_more_feedback"
+            style="@style/more_tab_rl_style">
+
+            <TextView
+                style="@style/more_tab_tv_style"
+                android:text="用户反馈" />
+
+            <ImageView
+                style="@style/more_tab_iv_style"
+                android:src="@drawable/arrow_right" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/rl_more_about"
+            style="@style/more_tab_rl_style">
+
+            <TextView
+                style="@style/more_tab_tv_style"
+                android:text="关于" />
+
+            <ImageView
+                style="@style/more_tab_iv_style"
+                android:src="@drawable/arrow_right" />
+        </RelativeLayout>
+    </LinearLayout>
+
+    <Button
+        android:text="客服电话：400-xxxxxxxxxx"
+        style="@style/service_telephone_btn_style" />
+
+</RelativeLayout>

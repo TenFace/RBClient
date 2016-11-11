@@ -1,0 +1,14 @@
+[
+    {
+        "merged": "E:\\studio\\RBClient\\viewPagerIndicator_library\\build\\intermediates\\res\\merged\\debug\\color\\vpi__tab_textcolor.xml",
+        "source": "E:\\studio\\RBClient\\viewPagerIndicator_library\\src\\main\\res\\color\\vpi__tab_textcolor.xml"
+    },
+    {
+        "merged": "E:\\studio\\RBClient\\viewPagerIndicator_library\\build\\intermediates\\res\\merged\\debug\\color\\vpi__light_theme.xml",
+        "source": "E:\\studio\\RBClient\\viewPagerIndicator_library\\src\\main\\res\\color\\vpi__light_theme.xml"
+    },
+    {
+        "merged": "E:\\studio\\RBClient\\viewPagerIndicator_library\\build\\intermediates\\res\\merged\\debug\\color\\vpi__dark_theme.xml",
+        "source": "E:\\studio\\RBClient\\viewPagerIndicator_library\\src\\main\\res\\color\\vpi__dark_theme.xml"
+    }
+]

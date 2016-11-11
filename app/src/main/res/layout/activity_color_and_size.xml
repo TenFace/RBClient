@@ -1,0 +1,184 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="10dp"
+            android:text="颜色："
+            android:textColor="#f00"
+            android:textSize="30sp" />
+
+        <RadioGroup
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:id="@+id/rg_container_color"
+            android:paddingLeft="10dp">
+
+            <RadioButton
+                android:id="@+id/tv_color1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/btn_color_size_selector"
+                android:button="@null"
+                android:padding="5dp"
+                android:text="红色"
+                android:textSize="20sp" />
+
+
+            <RadioButton
+                android:id="@+id/tv_color2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:background="@drawable/btn_color_size_selector"
+                android:button="@null"
+                android:padding="5dp"
+                android:text="绿色"
+                android:textSize="20sp" />
+        </RadioGroup>
+        <!--<LinearLayout-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:orientation="horizontal"-->
+        <!--android:padding="10dp">-->
+
+        <!--<TextView-->
+        <!--android:id="@+id/tv_color1"-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:background="@drawable/feedback_et_bg"-->
+        <!--android:text="红色"-->
+        <!--android:textSize="25sp" />-->
+
+        <!--<TextView-->
+        <!--android:id="@+id/tv_color2"-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:paddingLeft="20dp"-->
+        <!--android:text="绿色"-->
+        <!--android:textSize="25sp" />-->
+        <!--</LinearLayout>-->
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="10dp"
+            android:paddingTop="20dp"
+            android:text="尺码："
+            android:textColor="#f00"
+            android:textSize="30sp" />
+
+        <RadioGroup
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/rg_container_size"
+            android:orientation="horizontal">
+
+            <RadioButton
+                android:id="@+id/tv_size1"
+                android:layout_width="40dp"
+                android:layout_height="35dp"
+                android:layout_marginLeft="10dp"
+                android:background="@drawable/btn_color_size_selector"
+                android:button="@null"
+                android:gravity="center"
+                android:text="M"
+                android:textSize="20sp" />
+
+            <RadioButton
+                android:id="@+id/tv_size2"
+                android:layout_width="40dp"
+                android:layout_height="35dp"
+                android:layout_marginLeft="10dp"
+                android:background="@drawable/btn_color_size_selector"
+                android:button="@null"
+                android:gravity="center"
+                android:text="XXL"
+                android:textSize="20sp" />
+
+            <RadioButton
+                android:id="@+id/tv_size3"
+                android:layout_width="55dp"
+                android:layout_height="35dp"
+                android:layout_marginLeft="10dp"
+                android:background="@drawable/btn_color_size_selector"
+                android:button="@null"
+                android:gravity="center"
+                android:text="XXXL"
+                android:textSize="20sp" />
+        </RadioGroup>
+
+        <!--<LinearLayout-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:orientation="horizontal"-->
+        <!--android:padding="10dp">-->
+
+        <!--<TextView-->
+        <!--android:id="@+id/tv_size1"-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:text="M"-->
+        <!--android:textSize="25sp" />-->
+
+        <!--<TextView-->
+        <!--android:id="@+id/tv_size2"-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:paddingLeft="20dp"-->
+        <!--android:text="XXL"-->
+        <!--android:textSize="25sp" />-->
+
+        <!--<TextView-->
+        <!--android:id="@+id/tv_size3"-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:paddingLeft="20dp"-->
+        <!--android:text="XXXL"-->
+        <!--android:textSize="25sp" />-->
+        <!--</LinearLayout>-->
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="10dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="数量："
+                android:textColor="#f00"
+                android:textSize="30sp" />
+
+            <EditText
+                android:id="@+id/et_market_number"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="10dp"
+                android:text="1" />
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/bt_add_market_car"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/button_add_cart_selector"
+            android:paddingBottom="5dp"
+            android:paddingTop="5dp"
+            android:text="加入购物车"
+            android:textColor="@color/textview_market_detail"
+            android:textSize="30sp" />
+    </LinearLayout>
+</LinearLayout>

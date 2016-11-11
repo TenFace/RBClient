@@ -1,0 +1,108 @@
+package com.itheima.rbclient.ui.fragment;
+
+import android.os.Bundle;
+import android.util.Log;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.ListView;
+import android.widget.Toast;
+
+import com.android.volley.VolleyError;
+import com.handmark.pulltorefresh.library.PullToRefreshBase;
+import com.handmark.pulltorefresh.library.PullToRefreshListView;
+import com.itheima.rbclient.App;
+import com.itheima.rbclient.R;
+import com.itheima.rbclient.RBConstants;
+import com.itheima.rbclient.adapter.FavoriteAdapter;
+import com.itheima.rbclient.bean.Favorite;
+import com.itheima.rbclient.util.NetUtil;
+
+import org.senydevpkg.net.HttpLoader;
+import org.senydevpkg.net.HttpParams;
+import org.senydevpkg.net.resp.IResponse;
+
+import java.util.ArrayList;
+import java.util.List;
+
+/**
+ * Created by lenovo on 2016/8/3.
+ */
+public class FavoriteFragment extends BaseFragment implements View.OnClickListener, HttpLoader.HttpListener {
+
+    private Button btnFavoriteBack;
+    private Button btnFavoriteClear;
+    private FavoriteAdapter mAdapter;
+    private PullToRefreshListView lvFavorite;
+    private ListView listView;
+    private List<Favorite.ProductListBean> list = new ArrayList<>();
+
+    @Override
+    protected View createView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        View view = inflater.inflate(R.layout.fragment_favorite, null);
+        initView(view);
+        intData();
+        return view;
+    }
+
+    private void initView(View view) {
+        btnFavoriteBack = (Button) view.findViewById(R.id.btn_favorite_back);
+        btnFavoriteClear = (Button) view.findViewById(R.id.btn_favorite_clear);
+        lvFavorite = (PullToRefreshListView) view.findViewById(R.id.lv_favorite);
+        lvFavorite.setMode(PullToRefreshBase.Mode.BOTH);
+        listView = lvFavorite.getRefreshableView();
+
+        btnFavoriteBack.setOnClickListener(this);
+        btnFavoriteClear.setOnClickListener(this);
+        lvFavorite.setOnRefreshListener(new PullToRefreshBase.OnRefreshListener<ListView>() {
+            @Override
+            public void onRefresh(PullToRefreshBase<ListView> refreshView) {
+                intData();
+                Toast.makeText(getContext(), "刷新！", Toast.LENGTH_SHORT).show();
+                lvFavorite.onRefreshComplete();
+            }
+        });
+    }
+
+    private void intData() {
+        if (lvFavorite.getCurrentMode() == PullToRefreshBase.Mode.PULL_FROM_START){
+            list.clear();
+        }
+        HttpParams params = new HttpParams().put("page", list.size()/10 + "").put("pageNum", "10");
+        params.addHeader(NetUtil.generateHeaders(App.appliction));
+        App.HL.get(RBConstants.URL_FAVORITE, params, Favorite.class, RBConstants.REQUEST_CODE_FAVORITE, this);
+    }
+
+    @Override
+    public void onClick(View v) {
+        switch (v.getId()){
+            case R.id.btn_favorite_back:
+                getFragmentManager().popBackStack();
+                break;
+            case R.id.btn_favorite_clear:
+                //清空列表
+                break;
+        }
+    }
+
+    @Override
+    public void onGetResponseSuccess(int requestCode, IResponse response) {
+        Log.d("Favorite", "-----onGetResponseSuccess-----");
+        if (requestCode == RBConstants.REQUEST_CODE_FAVORITE) {
+            Favorite favorite = (Favorite) response;
+            list.addAll(favorite.getProductList());
+            if (mAdapter == null) {
+                mAdapter = new FavoriteAdapter(list);
+            } else {
+                mAdapter.notifyDataSetChanged(list);
+            }
+            listView.setAdapter(mAdapter);
+        }
+    }
+
+    @Override
+    public void onGetResponseError(int requestCode, VolleyError error) {
+        Toast.makeText(App.appliction, "error:" + error.getMessage(), Toast.LENGTH_SHORT).show();
+    }
+}

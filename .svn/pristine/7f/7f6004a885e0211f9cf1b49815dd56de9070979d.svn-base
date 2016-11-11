@@ -1,0 +1,20 @@
+package com.itheima.rbclient.protocol;
+
+import com.android.volley.Request;
+import com.itheima.rbclient.RBConstants;
+import com.itheima.rbclient.bean.HelpDetail;
+
+import org.senydevpkg.net.HttpLoader;
+import org.senydevpkg.net.HttpParams;
+import org.senydevpkg.net.protocol.IProtocol;
+
+/**
+ * Created by lenovo on 2016/8/3.
+ */
+public class HelpDetailProtocol implements IProtocol {
+    @Override
+    public Request doRequest(HttpLoader loader, HttpLoader.HttpListener listener) {
+        HttpParams params = new HttpParams();
+        return loader.post(RBConstants.URL_HELP_DETAIL, params, HelpDetail.class, RBConstants.REQUEST_CODE_HELP_DETAIL, listener);
+    }
+}

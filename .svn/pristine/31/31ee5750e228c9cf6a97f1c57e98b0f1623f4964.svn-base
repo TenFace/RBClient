@@ -1,0 +1,149 @@
+package com.itheima.rbclient.ui.fragment;
+
+import android.os.Bundle;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.LinearLayout;
+import android.widget.ListView;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
+import android.widget.TextView;
+import android.widget.Toast;
+
+import com.android.volley.VolleyError;
+import com.itheima.rbclient.App;
+import com.itheima.rbclient.R;
+import com.itheima.rbclient.RBConstants;
+import com.itheima.rbclient.adapter.SearchResultAdapter;
+import com.itheima.rbclient.bean.SearchList;
+import com.itheima.rbclient.bean.SearchText;
+import com.itheima.rbclient.util.LogUtil;
+import com.itheima.rbclient.util.PrefUtils;
+
+import org.greenrobot.eventbus.EventBus;
+import org.greenrobot.eventbus.Subscribe;
+import org.senydevpkg.net.HttpLoader;
+import org.senydevpkg.net.resp.IResponse;
+
+import java.util.ArrayList;
+
+import butterknife.ButterKnife;
+import butterknife.InjectView;
+import butterknife.OnClick;
+
+/**
+ * 作者：pyf on 2016/8/3 10:56
+ * <p/>
+ * 邮箱：1173408486@qq.com
+ */
+
+public class SearchProjectFragment extends BaseFragment implements RadioGroup.OnCheckedChangeListener, HttpLoader.HttpListener {
+
+
+    @InjectView(R.id.tv_back)
+    TextView tvBack;
+    @InjectView(R.id.rb_sales)
+    RadioButton rbSales;
+    @InjectView(R.id.rb_price)
+    RadioButton rbPrice;
+    @InjectView(R.id.rg_select)
+    RadioGroup rgSelect;
+    @InjectView(R.id.listview)
+    ListView listview;
+    @InjectView(R.id.ll_search_result)
+    LinearLayout llSearchResult;
+    @InjectView(R.id.rb_praise)
+    RadioButton rbPraise;
+    @InjectView(R.id.rb_time)
+    RadioButton rbTime;
+    private String tv_search;
+
+    private boolean flag = true;
+    private String et_search;
+    private SearchResultAdapter mAdapter;
+    private ArrayList list;
+    @Override
+    protected View createView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+
+        return View.inflate(App.appliction, R.layout.search_result_success, null);
+    }
+
+    private static final String TAG = "SearchProjectFragment";
+
+    @Override
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        // TODO: inflate a fragment view
+        View rootView = super.onCreateView(inflater, container, savedInstanceState);
+        ButterKnife.inject(this, rootView);
+        initView();
+        initData();
+        return rootView;
+    }
+
+    private void initView() {
+        tv_search = PrefUtils.getString(getActivity(), "tv_search", null);
+        rgSelect.setOnCheckedChangeListener(this);
+        rgSelect.check(R.id.rb_sales);
+    }
+
+    private void initData() {
+        EventBus.getDefault().register(this);
+        //listview.setAdapter(new SearchResultAdapter());
+    }
+
+    @Subscribe(sticky = true)
+    public void onEvent(SearchText searchText) {
+        Toast.makeText(getActivity(), "searchText" + searchText.getText(), Toast.LENGTH_SHORT).show();
+        et_search = searchText.getText();
+        App.HL.get(RBConstants.URL_SEARCH_LIST, null, SearchList.class,
+                RBConstants.REQUEST_CODE_SEARCH_LIST, this);
+    }
+
+
+    @Override
+    public void onDestroyView() {
+        super.onDestroyView();
+        ButterKnife.reset(this);
+    }
+
+    @Override
+    public void onCheckedChanged(RadioGroup group, int checkedId) {
+        switch (checkedId) {
+            case R.id.rb_sales:
+                break;
+            case R.id.rb_price:
+                break;
+            case R.id.rb_praise:
+                break;
+            case R.id.rb_time:
+                break;
+        }
+    }
+
+    @OnClick(R.id.tv_back)
+    public void onClick() {
+        mMainActivity.switchFragment(new SearchFragment());
+    }
+
+
+    @Override
+    public void onGetResponseSuccess(int requestCode, IResponse response) {
+        if (requestCode == RBConstants.REQUEST_CODE_SEARCH_LIST ) {
+            SearchList searchList = (SearchList) response;
+            list.addAll(searchList.getProductList());
+            if (mAdapter == null) {
+                mAdapter = new SearchResultAdapter(list);
+            } else {
+                mAdapter.notifyDataSetChanged();
+            }
+            listview.setAdapter(mAdapter);
+        }
+
+    }
+
+    @Override
+    public void onGetResponseError(int requestCode, VolleyError error) {
+        LogUtil.d(TAG, "error" + error);
+    }
+}

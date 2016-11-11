@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_marginTop="7dp"
+    style="@style/more_tab_rl_style">
+        <TextView
+            android:id="@+id/tv_item_help"
+            style="@style/more_tab_tv_style"
+            android:text="售后服务" />
+        <ImageView
+            style="@style/more_tab_iv_style"
+            android:src="@drawable/arrow_right" />
+</RelativeLayout>

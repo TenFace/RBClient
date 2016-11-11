@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <!--头布局-->
+    <include layout="@layout/title" />
+
+        <RadioGroup
+            android:id="@+id/rg_order"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:padding="8dp">
+
+        <RadioButton
+            android:id="@+id/rb_lastmonth"
+            android:padding="5dp"
+            android:checked="true"
+            android:layout_width="0sp"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:textSize="13sp"
+            android:button="@null"
+            android:layout_height="wrap_content"
+            android:background="@drawable/segment_selector_1_bg"
+            android:text="近一个月订单"/>
+
+        <RadioButton
+            android:id="@+id/rb_month_ago"
+            android:padding="5dp"
+            android:layout_width="0sp"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="一个月前订单"
+            android:textSize="13sp"
+            android:button="@null"
+            android:layout_height="wrap_content"
+            android:background="@drawable/segment_selector_2_bg" />
+
+        <RadioButton
+            android:id="@+id/rb_hasgone"
+            android:button="@null"
+            android:padding="5dp"
+            android:layout_width="0sp"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="已取消订单"
+            android:textSize="13sp"
+            android:layout_height="wrap_content"
+            android:background="@drawable/segment_selector_3_bg" />
+        </RadioGroup>
+
+    <FrameLayout
+        android:id="@+id/fl_container_orderlist"
+        android:layout_width="match_parent"
+        android:background="#FFFFFF"
+        android:layout_height="match_parent"></FrameLayout>
+</LinearLayout>

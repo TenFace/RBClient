@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <RelativeLayout
+        android:id="@+id/rl_helpcenter_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <TextView
+            style="@style/title_tv_style"
+            android:text="新手指南"/>
+        <Button
+            android:id="@+id/btn_helpdetail_back"
+            style="@style/title_btn_style"
+            android:paddingLeft="20dp"
+            android:background="@drawable/bar_head_back_bg"
+            android:text="返回"/>
+    </RelativeLayout>
+
+    <TextView
+        android:id="@+id/tv_helpdetail_question"
+        style="@style/more_tab_tv_style"
+        android:padding="10dp"
+        android:text="question"/>
+    <TextView
+        android:id="@+id/tv_helpdetail_answer"
+        style="@style/more_tab_tv_style"
+        android:padding="10dp"
+        android:textColor="#88000000"
+        android:text="sanswer"/>
+
+</LinearLayout>

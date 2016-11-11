@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:padding="5dp">
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <TextView
+            style="@style/orderdetail_content_left"
+            android:layout_width="wrap_content"
+            android:text="商品名称" />
+
+        <TextView
+            android:id="@+id/tv_order_goodname"
+            style="@style/orderdetail_content_right"
+            android:layout_width="wrap_content"
+            android:text="唐僧洗发爱飘柔" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="horizontal">
+
+            <TextView
+                style="@style/orderdetail_content_left"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="颜色:" />
+
+            <TextView
+                android:id="@+id/tv_order_color"
+                style="@style/orderdetail_content_right"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="红色" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1">
+
+            <TextView
+                style="@style/orderdetail_content_left"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="尺码:" />
+
+            <TextView
+                android:id="@+id/tv_order_chima"
+                style="@style/orderdetail_content_right"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="120" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="horizontal">
+
+            <TextView
+                style="@style/orderdetail_content_left"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="数量:" />
+
+            <TextView
+                android:id="@+id/tv_order_num"
+                style="@style/orderdetail_content_right"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="1" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1">
+
+            <TextView
+                style="@style/orderdetail_content_left"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="价格:" />
+
+            <TextView
+                android:id="@+id/tv_order_price"
+                style="@style/orderdetail_content_right"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="120" />
+        </LinearLayout>
+    </LinearLayout>
+</LinearLayout>

@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="45dip"
+    android:minHeight="45dip"
+      >
+
+    <ImageView
+        android:layout_marginLeft="16dip"
+        android:id="@+id/imgIcon"
+        android:layout_centerVertical="true"
+        android:layout_width="26dip"
+        android:layout_height="26dip"
+        android:layout_alignParentLeft="true"
+        android:background="@drawable/home_classify_01" />
+     <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+          android:layout_marginRight="12dp"    android:layout_centerVertical="true"
+          android:layout_alignParentRight="true"
+        android:src="@drawable/arrow"  />
+
+     <TextView
+         android:id="@+id/textContent"
+ 	         android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+         android:layout_centerVertical="true"
+          android:layout_marginLeft="18dip"
+         android:layout_toRightOf="@+id/imgIcon"
+         android:textStyle="bold"
+         android:textSize="16sp"
+         android:text="促销快报" android:textColor="@color/home_item" />
+
+</RelativeLayout>

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/rl_invoice_head_person"
+    style="@style/more_tab_rl_style"
+    android:clickable="true"
+    android:gravity="center_vertical">
+
+    <TextView
+        android:id="@+id/tv_item_invoice_name"
+        style="@style/username_tab_tv_style"
+        android:text="个人" />
+
+    <ImageView
+        android:id="@+id/tv_item_invoice_duigou"
+        style="@style/more_tab_iv_style"
+        android:visibility="invisible"
+        android:src="@drawable/duigou" />
+</RelativeLayout>

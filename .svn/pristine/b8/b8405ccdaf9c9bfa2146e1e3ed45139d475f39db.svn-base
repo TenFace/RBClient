@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <TextView
+            style="@style/title_tv_style"
+            android:text="账户中心"/>
+        <Button
+            android:id="@+id/btn_username_back"
+            style="@style/title_btn_style"
+            android:text="更多"/>
+        <Button
+            android:id="@+id/btn_username_logout"
+            style="@style/title_btn_style"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="10dp"
+            android:text="退出登陆"/>
+    </RelativeLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="15dp"
+        android:orientation="vertical">
+        <TextView
+            android:id="@+id/tv_username_user"
+            style="@style/username_tab_tv_style"
+            android:text="用户名：yektest"
+            />
+        <TextView
+            android:id="@+id/tv_username_member"
+            style="@style/username_tab_tv_style"
+            android:text="会员等级：普通会员"
+            />
+        <TextView
+            android:id="@+id/tv_username_points"
+            style="@style/username_tab_tv_style"
+            android:text="总积分：400"
+            />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="15dp"
+        android:orientation="vertical">
+
+        <RelativeLayout
+            android:id="@+id/rl_username_order"
+            style="@style/more_tab_rl_style"
+            android:clickable="true">
+            <TextView
+                android:id="@+id/tv_username_order"
+                style="@style/more_tab_tv_style"
+                android:text="我的订单(10)" />
+            <ImageView
+                style="@style/more_tab_iv_style"
+                android:src="@drawable/arrow_right" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/rl_username_address"
+            style="@style/more_tab_rl_style"
+            android:clickable="true">
+            <TextView
+                style="@style/more_tab_tv_style"
+                android:text="地址管理" />
+            <ImageView
+                style="@style/more_tab_iv_style"
+                android:src="@drawable/arrow_right" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/rl_username_coupon"
+            style="@style/more_tab_rl_style"
+            android:clickable="true">
+            <TextView
+                android:id="@+id/tv_username_coupon"
+                style="@style/more_tab_tv_style"
+                android:text="优惠券/礼品卡(3)" />
+            <ImageView
+                style="@style/more_tab_iv_style"
+                android:src="@drawable/arrow_right" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/rl_username_favorites"
+            style="@style/more_tab_rl_style"
+            android:clickable="true">
+            <TextView
+                android:id="@+id/tv_username_favorites"
+                style="@style/more_tab_tv_style"
+                android:text="收藏夹(6)" />
+            <ImageView
+                style="@style/more_tab_iv_style"
+                android:src="@drawable/arrow_right" />
+        </RelativeLayout>
+    </LinearLayout>
+
+</LinearLayout>

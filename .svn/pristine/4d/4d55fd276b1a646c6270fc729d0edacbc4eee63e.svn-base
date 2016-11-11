@@ -1,0 +1,101 @@
+package com.itheima.rbclient.adapter;
+
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.BaseAdapter;
+import android.widget.ImageView;
+import android.widget.TextView;
+
+import com.itheima.rbclient.App;
+import com.itheima.rbclient.R;
+import com.itheima.rbclient.RBConstants;
+import com.itheima.rbclient.bean.CartResponse;
+import com.itheima.rbclient.eventBean.EventId;
+import com.itheima.rbclient.ui.fragment.BaseFragment;
+import com.itheima.rbclient.ui.fragment.MarketDetailFragment;
+
+import org.greenrobot.eventbus.EventBus;
+
+import java.util.List;
+
+import butterknife.ButterKnife;
+import butterknife.InjectView;
+
+/**
+ * Created by Administrator on 2016/8/5.
+ */
+public class CartGoodsAdapter extends BaseAdapter {
+    @InjectView(R.id.tv_detail_goods)
+    TextView tv_detail_goods;
+    @InjectView(R.id.tv_num)
+    TextView tv_num;
+    @InjectView(R.id.tv_size)
+    TextView tv_size;
+    @InjectView(R.id.tv_color)
+    TextView tv_color;
+    @InjectView(R.id.tv_price)
+    TextView tv_price;
+    @InjectView(R.id.tv_total)
+    TextView tv_total;
+    @InjectView(R.id.iv_icon)
+    ImageView iv_icon;
+    List<CartResponse.CartEntity> cart;
+    private BaseFragment fragment;
+
+    public CartGoodsAdapter(List<CartResponse.CartEntity> cart, BaseFragment fragment) {
+        super();
+        this.cart = cart;
+        this.fragment = fragment;
+    }
+
+    @Override
+    public int getCount() {
+        return cart.size();
+    }
+
+    @Override
+    public Object getItem(int position) {
+        return cart.get(position);
+    }
+
+    @Override
+    public long getItemId(int position) {
+        return position;
+    }
+
+    @Override
+    public View getView(final int position, View convertView, ViewGroup parent) {
+        //判断convertView是否为空
+        CartResponse.CartEntity cartEntity = cart.get(position);
+        CartResponse.CartEntity.ProductEntity product = cartEntity.getProduct();
+        convertView = View.inflate(App.appliction, R.layout.layout_detail_goods, null);
+        ButterKnife.inject(this, convertView);
+        tv_detail_goods.setText(product.getName());
+        tv_color.setText("颜色：" + product.getProductProperty().get(0).getV());
+        tv_num.setText("数量：" + cart.get(position).getProdNum());
+        tv_size.setText("尺码：" + product.getProductProperty().get(1).getV());
+        tv_price.setText("价格：" + product.getPrice());
+        tv_total.setText("小计：" + product.getPrice() * cart.get(position).getProdNum());
+        App.IL.get(RBConstants.URL_SERVER + product.getPic(),
+                com.android.volley.toolbox.ImageLoader.getImageListener(iv_icon, R.mipmap.ic_launcher, R.mipmap.ic_launcher));
+        //购物车侧边按钮点击事件
+//        ib_setting_goods.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                Toast.makeText(App.appliction, "购物车侧边按钮点击事件", Toast.LENGTH_SHORT).show();
+//            }
+//        });
+        convertView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //传送商品的ID，用来展现商品详情
+                int id = cart.get(position).getProduct().getId();
+                EventBus.getDefault().postSticky(new EventId(id));
+                fragment.swichToChildFragment(MarketDetailFragment.instantiate(App.appliction, "com.itheima.rbclient.ui.fragment.MarketDetailFragment"), true);
+            }
+        });
+        return convertView;
+    }
+
+
+}
