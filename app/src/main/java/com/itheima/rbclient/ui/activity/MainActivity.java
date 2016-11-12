@@ -16,6 +16,7 @@ import com.itheima.rbclient.ui.fragment.FragmentInstanceManager;
 import com.itheima.rbclient.ui.fragment.HomeFragment;
 import com.itheima.rbclient.ui.fragment.MoreFragment;
 import com.itheima.rbclient.ui.fragment.SearchFragment;
+import com.umeng.analytics.MobclickAgent;
 
 import butterknife.ButterKnife;
 import butterknife.InjectView;
@@ -26,6 +27,18 @@ public class MainActivity extends FragmentActivity implements OnCheckedChangeLis
     @InjectView(R.id.rg_content_fragment)
     RadioGroup mRadioGroup;
     private FragmentManager mFragmentManager;
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        MobclickAgent.onResume(this);
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        MobclickAgent.onPause(this);
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

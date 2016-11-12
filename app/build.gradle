@@ -38,4 +38,5 @@ dependencies {
     compile files('libs/photoview-library.jar')
     compile 'com.jakewharton:butterknife:5.1.1'
     compile project(':volley')
+    compile 'com.umeng.analytics:analytics:latest.integration'
 }
